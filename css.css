@@ -37,7 +37,7 @@ V3.2 - Update 10 - Synced to make the reddit theme /r/NautClassic and /r/Naut us
 .comments-page .side .linkinfo                     {margin-top:    48px;}
 
 .sidebox.submit .morelink:after {
- content: "Please remember to read the rules. Thank you!"; /* You can change the hover message for the submit-text button here */
+	content: "Please remember to read the rules. Thank you!"; /* You can change the hover message for the submit-text button here */
 }
 
 /* END ADDON */
@@ -74,7 +74,7 @@ body>.content                   {margin-top:        271px;}
 #header-bottom-left             {top:               208px;}
 
 .sidebox.submit.submit-text .morelink {
-  top: 271px;
+	top: 271px;
 }
 
 
@@ -90,14 +90,14 @@ body>.content                   {margin-top:        241px;}
 #header-bottom-left             {top:               178px;}
 
 .sidebox.submit.submit-text .morelink {
-  top: 241px;
+	top: 241px;
 }
 
 body::before {
 	height: 316px;
 }
 .titlebox blockquote:nth-of-type(2) > ol li:last-of-type {
-	  height: 316px;
+	height: 316px;
 }
 
 .titlebox blockquote:nth-of-type(2) {
@@ -131,13 +131,13 @@ body::before {
 .expando-button:hover, .top-page .content .menuarea .dropdown.lightdrop .selected, .expando-button:hover, .side .titlebox .md h3 a,
 .res div.RES-keyNav-activeElement, .res div.commentarea div.RES-keyNav-activeElement.entry div.noncollapsed {background-color: #ffc70e; color: #000;}
 
-    /* Hover color = 10% white overlay color */
-    .morelink:hover, .submit-page #newlink.submit.content .tabmenu.formtab .selected a:hover,
-    .side .titlebox .md h3 a:hover, .titlebox .fancy-toggle-button .add:hover, .titlebox .fancy-toggle-button .add:hover:after
-     {background-color: #fdda75;}
+/* Hover color = 10% white overlay color */
+.morelink:hover, .submit-page #newlink.submit.content .tabmenu.formtab .selected a:hover,
+.side .titlebox .md h3 a:hover, .titlebox .fancy-toggle-button .add:hover, .titlebox .fancy-toggle-button .add:hover:after
+{background-color: #fdda75;}
 
-    /* Active color = 10% black overlay color */
-    .morelink:active, .side .titlebox .md h3 a:active {background-color: hsl(46, 100%, 43%);}
+/* Active color = 10% black overlay color */
+.morelink:active, .side .titlebox .md h3 a:active {background-color: hsl(46, 100%, 43%);}
 
 /* --- End Addon --- */
 
@@ -150,7 +150,7 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 .link .entry .buttons li a.flairselectbtn, .comment .flat-list li a[onclick*="reply"], 
 .comment .flat-list li a:hover, .tagline .submitter, .tagline .submitter, .side:after, 
 .usertext .bottom-area a.reddiquette, .side .titlebox .md h6 a
- {color: rgb(65,111,145);}
+{color: rgb(65,111,145);}
 /* --- End Addon --- */
 
 
@@ -403,56 +403,86 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 }
 
 
-/* Hero Roster */
+/*------------------------------------------------------------------
+[Hero Roster]
+--------------------------------------------------------------------
+
+This section creates the hero roster in the header of the page.  
+
+It is a blockquote with a paragraph>link that contains the header, 
+and then an ordered list which contains each hero in a list item.  
+
+The last list item is a positioned large div/image that creates the 
+illusion of the banner being blurred by fading in a pre-blurred 
+version of the background behind the header elements.
+
+--Section Hierarchy--
+
+Blockquote 						[Parent]
+	Paragraph 					[Header]
+    	Anchor 					[Actual text of header]
+	Ordered List 				[List of Heroes]
+		List Items 				[Parent for Each Hero]
+			Anchor 				[The container for the hero button]
+				Strong 			[The hero portrait]
+			Anchor 				[The full-size portrait]
+			Anchor 				[The hero label]
+				Em 				["Role:"]
+					Strong 		[Their actual role (tank, dps, etc.)]
+		List Item (last-of) 	[The blurred background]
+
+-------------------------------------------------------------------*/
+
+/* Parent */
 .titlebox blockquote:nth-of-type(2) {
-  position: absolute;
-  left: 785px;
-  width: 668px;
-  padding:0;
-  margin:0;
-  border:none;
+	position: absolute;
+	left: 785px;
+	width: 668px;
+	padding:0;
+	margin:0;
+	border:none;
 }
 
+
+/* List of Heroes */
 .titlebox blockquote:nth-of-type(2) > ol {
 	padding: 0;
 	margin:0;
 }
 
+
+/* Hero Container */
 .titlebox blockquote:nth-of-type(2) > ol li {
 	display: block;
 	float:left;
 	padding:0;
 	margin:0 4px 0 0;
 }
-
-/* blurred cherry blossom effect */
-
-.titlebox blockquote:nth-of-type(2) > ol li:last-of-type {
-  display: block;
-  position: absolute;
-  width: calc(100vw - 17px);
-  background-image: url(%%header-cherry-blur%%);
-  background-size: cover;
-  left: calc(-100% - 117px);
-  opacity: 0;
-  transition: opacity .5s .15s;
-  margin: 0;
-  background-position: 0 0;
+.titlebox blockquote:nth-of-type(2) > ol li:nth-of-type(14) {
+	margin-right: 0;
 }
 
+
+/* Blurred Background Container */
+.titlebox blockquote:nth-of-type(2) > ol li:last-of-type {
+	display: block;
+	position: absolute;
+	width: calc(100vw - 17px);
+	background-image: url(%%header-cherry-blur%%);
+	background-size: cover;
+	left: calc(-100% - 117px);
+	opacity: 0;
+	transition: opacity .5s .15s;
+	margin: 0;
+	background-position: 0 0;
+}
 .titlebox blockquote:nth-of-type(2) > ol li:hover ~ li:last-of-type {
 	opacity: 1;
 	transition: opacity .5s 0s;
 }
 
 
-
-
-.titlebox blockquote:nth-of-type(2) > ol li:nth-of-type(14) {
-	margin-right: 0;
-	}
-
-
+/* Header link to base heroes page */
 .titlebox a[href^="http://battle.net/overwatch/heroes#"]{
 	display: block;
 	color: #FFF;
@@ -470,25 +500,29 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 	z-index: 99;
 }
 
+
+/* Hero Portait Button */
 .titlebox a[href^="http://bit.ly/ow-"]:nth-of-type(1) {
 	display: block;
 	width: 40px;
 	height:40px;
 	background-color: transparent;
 	overflow: hidden;
-  width: 44px;
-  height: 44px;
-  margin-top: -2px;
-  border: 2px solid #FFF;
-  border-width: 2px 0px;
-  border-radius: 5px;
-  transform: skewX(-.25rad);
+	width: 44px;
+	height: 44px;
+	margin-top: -2px;
+	border: 2px solid #FFF;
+	border-width: 2px 0px;
+	border-radius: 5px;
+	transform: skewX(-.25rad);
 	background-color: rgba(0,0,0,.3);
-		position: relative;
+	position: relative;
 	z-index: 99;
 
 }
 
+
+/* Hero Portait Subwrapper */
 .titlebox a[href^="http://bit.ly/ow-"]:nth-of-type(1) strong {
 	display: inline-block;
 	width: 48px;
@@ -499,34 +533,45 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 	text-transform: uppercase;
 	position: relative;
 	text-indent: -500%;
-	background-repeat: no-repeat;
-	background-size:100%;
 	transform: skewX(.25rad);
 }
+/* End Hero Portrait Button */
 
-.titlebox blockquote:nth-of-type(2) > ol li:hover::before {
-	background-color: #ffc70e;
-	}
 
+
+
+/* Hero Portrait Full */
 .titlebox a[href^="http://bit.ly/ow-"]:nth-of-type(2) {
-	z-index: -100;
+	z-index: -100; /* hide under all content when inactive (in addition to being transparent, ensures clickthrough) */
+	opacity: 0;
+
 	display: block;
 	width: 650px;
 	height:300px;
+
 	position: absolute;
 	bottom:-20px;
 	left:0;
 	right:0;
+
 	margin:0 auto;
-	opacity: 0;
+
 	text-indent: -100%;
 	overflow: hidden;
-	background-repeat: no-repeat;
-	  transform:translateX(-40px);
-	  background-position: bottom center;
-  transition: opacity .25s, transform .5s;
-}
 
+	background-repeat: no-repeat;
+	background-position: bottom center;
+
+	transform:translateX(-40px);
+
+	transition: opacity .25s, transform .5s;
+}
+/* End Portrait Full */
+
+
+
+
+/* Hero Label */
 .titlebox a[href^="http://bit.ly/ow-"]:nth-of-type(3) {
 	z-index: -100;
 	display: block;
@@ -540,28 +585,32 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 	border-radius: 5px;
 	opacity: 0;
 	overflow: visible;
-	  transform:translateX(-40px);
-  transition: opacity .25s .25s, transform .5s .25s;
-  color: #FFF;
-  font-size: 200%;
-  padding: 20px;
-  background:rgba(8,27,43,.7);
+	transform:translateX(-40px);
+	transition: opacity .25s .25s, transform .5s .25s;
+	color: #FFF;
+	font-size: 200%;
+	padding: 20px;
+	background:rgba(8,27,43,.7);
 }
 
+
+/* Hero Label Right Wing */
 .titlebox a[href^="http://bit.ly/ow-"]:nth-of-type(3)::after {
-  content: " ";
-  display: block;
-  width: 100%;
-  height: 100%;
-  box-sizing: content-box;
-  padding: 5px 5px;
-  left: 0;
-  top: -5px;
-  position: absolute;
-  border-right: 4px solid #FFF;
-  border-radius: 8px;
+	content: " ";
+	display: block;
+	width: 100%;
+	height: 100%;
+	box-sizing: content-box;
+	padding: 5px 5px;
+	left: 0;
+	top: -5px;
+	position: absolute;
+	border-right: 4px solid #FFF;
+	border-radius: 8px;
 }
 
+
+/* Hero Label Role Container*/
 .titlebox a[href^="http://bit.ly/ow-"]:nth-of-type(3) em {
 	font-weight: normal;
 	display: block;
@@ -573,6 +622,8 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 	font-weight: 700;
 }
 
+
+/* Hero Label "Role" */
 .titlebox a[href^="http://bit.ly/ow-"]:nth-of-type(3) strong {
 	color: rgba(0,195,255,1);
 	padding-left:18px;
@@ -581,27 +632,29 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 
 }
 
+
+/* Hero Label Role Actual */
 .titlebox a[href^="http://bit.ly/ow-"]:nth-of-type(3) del {
-  color: inherit;
-  font-size: 80%;
-  text-decoration: none;
+	color: inherit;
+	font-size: 80%;
+	text-decoration: none;
 }
 
+/* Hero Label Role Icons (determined by hashtag) */
 .titlebox a[href$="#tank"]:nth-of-type(3) strong {
 	background-image: url(%%role-tank%%);
 }
-
 .titlebox a[href$="#offense"]:nth-of-type(3) strong {
 	background-image: url(%%role-offense%%);
 }
-
 .titlebox a[href$="#defense"]:nth-of-type(3) strong {
 	background-image: url(%%role-defense%%);
 }
-
 .titlebox a[href$="#support"]:nth-of-type(3) strong {
 	background-image: url(%%role-support%%);
 }
+
+
 
 .titlebox blockquote:nth-of-type(2) li:hover a:not(:nth-of-type(1)) {
 	display: block;
@@ -611,9 +664,173 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 	opacity: 1;
 }
 
+.titlebox blockquote:nth-of-type(2) li a[href^="http://bit.ly/ow-"]:nth-of-type(1) strong {
+	background-image: url(%%herobutton-sprite%%);
+}
+
+
+
+
 .titlebox blockquote:nth-of-type(2) li:hover a[href^="http://bit.ly/ow-"]:nth-of-type(1) {
 	background-color: #ffc70e; 
 }
+
+
+/* McCree */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-mccree"]:nth-of-type(1) strong {
+	background-position: -49px -88px;
+
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-mccree"]:nth-of-type(2) {
+	background-image: url(%%mccree-portrait%%);
+} 
+
+
+/* Mercy */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-mercy"]:nth-of-type(1) strong {
+	background-position: 0 -44px;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-mercy"]:nth-of-type(2) {
+	background-image: url(%%mercy-portrait%%);
+} 
+
+
+/* Pharah */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-pharah"]:nth-of-type(1) strong {
+	background-position: 0 -88px;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-pharah"]:nth-of-type(2) {
+	background-image: url(%%pharah-portrait%%);
+} 
+
+
+/* Bastion */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-bastion"]:nth-of-type(1) strong {
+	background-position: -49px 0;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-bastion"]:nth-of-type(2)  {
+	background-image: url(%%bastion-portrait%%);
+} 
+
+
+/* Hanzo */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-hanzo"]:nth-of-type(1) strong {
+	background-position: -98px 0;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-hanzo"]:nth-of-type(2) {
+	background-image: url(%%hanzo-portrait%%);
+} 
+
+
+/* Reaper */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-reaper"]:nth-of-type(1)  strong {
+	background-position: -98px -88px;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-reaper"]:nth-of-type(2) {
+	background-image: url(%%reaper-portrait%%);
+} 
+
+
+/* Reinhardt */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-reinhardt"]:nth-of-type(1) strong {
+	background-position: -98px -132px;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-reinhardt"]:nth-of-type(2) {
+	background-image: url(%%reinhardt-portrait%%);
+} 
+
+
+/* Symmetra */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-symmetra"]:nth-of-type(1) strong {
+	background-position: 0 0;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-symmetra"]:nth-of-type(2) {
+	background-image: url(%%symmetra-portrait%%);
+} 
+
+
+/* Torbjorn */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-torbjorn"]:nth-of-type(1) strong {
+	background-position: 0 -176px;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-torbjorn"]:nth-of-type(2) {
+	background-image: url(%%torbjorn-portrait%%);
+} 
+
+
+/* Tracer */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-tracer"]:nth-of-type(1) strong {
+	background-position: -49px -176px;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-tracer"]:nth-of-type(2) {
+	background-image: url(%%tracer-portrait%%);
+} 
+
+
+/* Widowmaker */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-widowmaker"]:nth-of-type(1) strong {
+	background-position: 0 -132px;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-widowmaker"]:nth-of-type(2) {
+	background-image: url(%%widowmaker-portrait%%);
+} 
+
+
+/* Winston */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-winston"]:nth-of-type(1) strong {
+	background-position: -49px -132px;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-winston"]:nth-of-type(2) {
+	background-image: url(%%winston-portrait%%);
+} 
+
+
+/* Zarya */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-zarya"]:nth-of-type(1) strong {
+	background-position: -49px -44px;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-zarya"]:nth-of-type(2)  {
+	background-image: url(%%zarya-portrait%%);
+}
+
+
+/* Zenyatta */
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-zenyatta"]:nth-of-type(1) strong {
+	background-position: -98px -44px;
+} 
+
+.titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-zenyatta"]:nth-of-type(2) {
+	background-image: url(%%zenyatta-portrait%%);
+} 
+
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -724,7 +941,7 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 } 
 
 .titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-zarya"]:nth-of-type(2)  {
-  background-image: url(%%zarya-portrait%%);
+	background-image: url(%%zarya-portrait%%);
 }
 
 .titlebox blockquote:nth-of-type(2) a[href^="http://bit.ly/ow-zenyatta"]:nth-of-type(1) strong {
@@ -735,7 +952,7 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 	background-image: url(%%zenyatta-portrait%%);
 } 
 
-
+*/
 
 /* Posting Guidelines */
 
@@ -768,190 +985,190 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 }
 
 .titlebox blockquote:nth-of-type(3) > ol li::before {
-  content: counter(li);
-  counter-increment: li;
-  position: absolute;
-  left: 0;
-  margin-top: -1.5em;
-  top: 50%;
-  background: rgba(0,195,255,.5);
-  height: 3em;
-  color: #fff;
-  width: 2em;
-  line-height: 3em;
-  border: 1px solid rgba(0,195,255,1);
-  text-align: center;
-  font-weight: bold;
-  border-radius: 0;
-  transform: skewX(-.25rad);
-  -webkit-transition: all .1s ease;
-  -moz-transition: all .1s ease;
-  -ms-transition: all .1s ease;
-  -o-transition: all .1s ease;
-  transition: all .1s ease;
+	content: counter(li);
+	counter-increment: li;
+	position: absolute;
+	left: 0;
+	margin-top: -1.5em;
+	top: 50%;
+	background: rgba(0,195,255,.5);
+	height: 3em;
+	color: #fff;
+	width: 2em;
+	line-height: 3em;
+	border: 1px solid rgba(0,195,255,1);
+	text-align: center;
+	font-weight: bold;
+	border-radius: 0;
+	transform: skewX(-.25rad);
+	-webkit-transition: all .1s ease;
+	-moz-transition: all .1s ease;
+	-ms-transition: all .1s ease;
+	-o-transition: all .1s ease;
+	transition: all .1s ease;
 }
 
 /* General Sidebar Formatting */
 
 .titlebox blockquote:nth-of-type(3), .titlebox blockquote:nth-of-type(4) {
-    padding: 0;
-    margin: 0;
-    border: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
 
 .titlebox h2 {
-    padding: 0;
-    background: rgba(11,71,114,1);
-    color: #FFF;
-    margin-left:-24px !important;
-    margin-bottom:12px !important;
-    width: calc(100% - -48px);
-    padding:5px 14px;
-    display: block;
-    font-family: 'Futura','Century Gothic',sans-serif;
-    font-weight:700;
-    letter-spacing:-.05em;
-    box-shadow:0px 1px 3px rgba(0,0,0,.25);
-    text-shadow:1px 1px 1px rgba(0,0,0,.5);
-    transform: skewX(-.25rad);
-    text-transform: uppercase;
+	padding: 0;
+	background: rgba(11,71,114,1);
+	color: #FFF;
+	margin-left:-24px !important;
+	margin-bottom:12px !important;
+	width: calc(100% - -48px);
+	padding:5px 14px;
+	display: block;
+	font-family: 'Futura','Century Gothic',sans-serif;
+	font-weight:700;
+	letter-spacing:-.05em;
+	box-shadow:0px 1px 3px rgba(0,0,0,.25);
+	text-shadow:1px 1px 1px rgba(0,0,0,.5);
+	transform: skewX(-.25rad);
+	text-transform: uppercase;
 }
 
 .titlebox blockquote:nth-of-type(4) > ol {
-    list-style:none;
-    padding:0;
-    margin:0;
-    font-family: Arial,sans-serif;
-    font-weight:bold;
-    font-size:12px;    
-    counter-reset: li;
+	list-style:none;
+	padding:0;
+	margin:0;
+	font-family: Arial,sans-serif;
+	font-weight:bold;
+	font-size:12px;    
+	counter-reset: li;
 }
 
 .titlebox blockquote:nth-of-type(4) > ol > li {
-    min-height:32px;
-    padding:4px 6px;
-    margin-left:22px;
-    margin-bottom:12px;
-    background:rgba(0,0,0,.035);
-    box-shadow:inset 0px 0px 3px rgba(0,0,0,.10);
-    position: relative;
-    border:1px solid #CCC;
+	min-height:32px;
+	padding:4px 6px;
+	margin-left:22px;
+	margin-bottom:12px;
+	background:rgba(0,0,0,.035);
+	box-shadow:inset 0px 0px 3px rgba(0,0,0,.10);
+	position: relative;
+	border:1px solid #CCC;
 }
 
 
 
 
 .titlebox blockquote:nth-of-type(4) > ol > li:hover {
-    background: #ffc70e;
-    cursor: help;
-    box-shadow:inset 0px 0px 3px rgba(0,0,0,.1), 0px 0px 3px rgba(0,0,0,.15);
+	background: #ffc70e;
+	cursor: help;
+	box-shadow:inset 0px 0px 3px rgba(0,0,0,.1), 0px 0px 3px rgba(0,0,0,.15);
 }
 
 .titlebox blockquote:nth-of-type(4) > ol > li::after {
-    content: "This is where extra text will go.";
-    position: absolute;
-    display: block;
-    bottom: -65px;
-    height:60px;
-    padding:4px;
-    z-index: 200;
-    background: #CCC;
-    color: #FFF;
-    width: calc(100% - -2px);
-    left: -1px;
-    box-shadow: 0px 3px 5px rgba(0,0,0,.25);
-    text-shadow:1px 1px .5px rgba(0,0,0,.5);
-    font-weight: normal;
-    z-index:-100;
-    opacity: 0;
-    transition: opacity .25s .5s;
+	content: "This is where extra text will go.";
+	position: absolute;
+	display: block;
+	bottom: -65px;
+	height:60px;
+	padding:4px;
+	z-index: 200;
+	background: #CCC;
+	color: #FFF;
+	width: calc(100% - -2px);
+	left: -1px;
+	box-shadow: 0px 3px 5px rgba(0,0,0,.25);
+	text-shadow:1px 1px .5px rgba(0,0,0,.5);
+	font-weight: normal;
+	z-index:-100;
+	opacity: 0;
+	transition: opacity .25s .5s;
 }
 
 .titlebox blockquote:nth-of-type(4) > ol > li:hover::after {
-    z-index:10;
-    opacity: 1;
+	z-index:10;
+	opacity: 1;
 }
 
 .titlebox blockquote:nth-of-type(4) > ol > li::before {
-    counter-increment: li;
-    content: counter(li);
-    position: absolute;
-    left:-22px;
-    top: calc(50% - 7px);
-    font-size:175%;
-    font-family: 'Futura','Century Gothic',sans-serif;
-    width:40px;
-    display: block;
-    font-weight: 100;
+	counter-increment: li;
+	content: counter(li);
+	position: absolute;
+	left:-22px;
+	top: calc(50% - 7px);
+	font-size:175%;
+	font-family: 'Futura','Century Gothic',sans-serif;
+	width:40px;
+	display: block;
+	font-weight: 100;
 }
 
 .titlebox h2 a {
-    color: inherit !important;
+	color: inherit !important;
 }
 
 /* Linkflair */
 
-	/* BLue Post */
+/* BLue Post */
 
-	.linkflair-bluepost {
-		background-image:url(%%blizzard-fadeaway%%), radial-gradient(ellipse farthest-side at left top, rgba(255, 255, 255,0) 0%, rgba(0, 195, 255, 0.15) 100%);
-		background-repeat: no-repeat;
-		background-position: left center;
- 		 background-color: #333;
-		border:1px solid #000;
-	}
-
-	.link.last-clicked.linkflair-bluepost {
-		background-color: #444 !important;
-	}
-	.linkflair-bluepost a.title {
-    font-weight: 900;
-    color: rgba(0,195,255,1) !important;
-    font-family: 'Futura','Century Gothic',sans-serif;
+.linkflair-bluepost {
+	background-image:url(%%blizzard-fadeaway%%), radial-gradient(ellipse farthest-side at left top, rgba(255, 255, 255,0) 0%, rgba(0, 195, 255, 0.15) 100%);
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-color: #333;
+	border:1px solid #000;
 }
 
-	.linkflair-bluepost a {
-		color: rgba(0,195,255,1) !important;
-	}
-	.linkflair-bluepost .entry .tagline, .linkflair-bluepost .entry .buttons li a {
-		color: #CCC;
-	}
+.link.last-clicked.linkflair-bluepost {
+	background-color: #444 !important;
+}
+.linkflair-bluepost a.title {
+	font-weight: 900;
+	color: rgba(0,195,255,1) !important;
+	font-family: 'Futura','Century Gothic',sans-serif;
+}
 
-	.linkflair-bluepost .linkflairlabel {
-		  background: rgba(0,195,255,1);
-  margin: 0px 0 0 5px;
-  color: #FFF;
-  text-shadow: 0 0 20px #fff,0 0 20px rgba(22,143,231,.85),0 0 10px #c7f2ff,0 0 10px #3cadff,0 0 5px #3cadff,0 0 5px #3cadff;
-  padding: 0px 3px;
-  border-radius: 2px;
-  border: 1px solid #3cadff;
-  display: none;
-	}
+.linkflair-bluepost a {
+	color: rgba(0,195,255,1) !important;
+}
+.linkflair-bluepost .entry .tagline, .linkflair-bluepost .entry .buttons li a {
+	color: #CCC;
+}
 
-	.linkflair-bluepost .entry {
-	    border-bottom: 0;
-	}
+.linkflair-bluepost .linkflairlabel {
+	background: rgba(0,195,255,1);
+	margin: 0px 0 0 5px;
+	color: #FFF;
+	text-shadow: 0 0 20px #fff,0 0 20px rgba(22,143,231,.85),0 0 10px #c7f2ff,0 0 10px #3cadff,0 0 5px #3cadff,0 0 5px #3cadff;
+	padding: 0px 3px;
+	border-radius: 2px;
+	border: 1px solid #3cadff;
+	display: none;
+}
 
-	.linkflair-bluepost .arrow.down {
-		display: none;
-	}
+.linkflair-bluepost .entry {
+	border-bottom: 0;
+}
 
-	/* Sticky Post */
-	.stickied a.title {
-	    font-weight: 900;
-	    font-style: italic;
-	    font-family: 'Futura','Century Gothic',sans-serif;
-	}
+.linkflair-bluepost .arrow.down {
+	display: none;
+}
 
-	.stickied {
-		background-image:url(%%overwatch-fadeaway-tilted%%), radial-gradient(ellipse farthest-side at left top, rgba(255, 255, 255,0) 0%, rgba(101, 179, 84,.25) 100%);
-		background-repeat: no-repeat;
-		background-position: left center;
-		border: 1px solid rgb(101,179,84);
-  margin-bottom: 5px;
-  box-shadow: 0px 1px 3px rgba(0,0,0,.25);
-	}
-	
+/* Sticky Post */
+.stickied a.title {
+	font-weight: 900;
+	font-style: italic;
+	font-family: 'Futura','Century Gothic',sans-serif;
+}
+
+.stickied {
+	background-image:url(%%overwatch-fadeaway-tilted%%), radial-gradient(ellipse farthest-side at left top, rgba(255, 255, 255,0) 0%, rgba(101, 179, 84,.25) 100%);
+	background-repeat: no-repeat;
+	background-position: left center;
+	border: 1px solid rgb(101,179,84);
+	margin-bottom: 5px;
+	box-shadow: 0px 1px 3px rgba(0,0,0,.25);
+}
+
 /* Userflair */
 .flair {
 	width: 36px;
@@ -969,7 +1186,7 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 	width: 36px;
 	height: 16px;
 	background: url(%%sprite-flair%%);
-  	overflow: hidden;
+	overflow: hidden;
 }
 
 .flair:hover {
@@ -977,46 +1194,46 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 }
 
 .flair-zenyatta::before {
-background-position: 0 -68px;
+	background-position: 0 -68px;
 }
 .flair-bastion::before {
-background-position: 0 -34px;
+	background-position: 0 -34px;
 }
 .flair-hanzo::before {
-background-position: -74px -51px;
+	background-position: -74px -51px;
 }
 .flair-mccree::before {
-background-position: -37px -51px;
+	background-position: -37px -51px;
 }
 .flair-mercy::before {
-background-position: 0 -51px;
+	background-position: 0 -51px;
 }
 .flair-pharah::before {
-background-position: -74px -34px;
+	background-position: -74px -34px;
 }
 .flair-reaper::before {
-background-position: -37px -34px;
+	background-position: -37px -34px;
 }
 .flair-reinhardt::before {
-background-position: -37px -68px;
+	background-position: -37px -68px;
 }
 .flair-symmetra::before {
-background-position: -74px -17px;
+	background-position: -74px -17px;
 }
 .flair-torbjorn::before {
-background-position: -37px -17px;
+	background-position: -37px -17px;
 }
 .flair-tracer::before {
-background-position: 0 -17px;
+	background-position: 0 -17px;
 }
 .flair-widowmaker::before {
-background-position: -74px 0;
+	background-position: -74px 0;
 }
 .flair-winston::before {
-background-position: -37px 0;
+	background-position: -37px 0;
 }
 .flair-zarya::before {
-background-position: 0 0;
+	background-position: 0 0;
 }
 /* Recent Gameplay Videos */
 
@@ -1163,161 +1380,161 @@ background-position: 0 0;
 
 .titlebox blockquote:nth-of-type(3) > ol li:nth-of-type(2) a:nth-of-type(1) {
 	background-image: url(%%tracervideo%%);
-}*/
+	}*/
 
 
-#header .tabmenu li a {
-	text-transform: uppercase;
-	font-family: Futura,"century gothic",arial,sans-serif;
-}
+	#header .tabmenu li a {
+		text-transform: uppercase;
+		font-family: Futura,"century gothic",arial,sans-serif;
+	}
 
-#header .pagename a {
-	display: block;
-	visibility: visible!important;
-	position: absolute;
-	left: 8px;
-	z-index: 99;
-	background-image: url(%%subreddit-text%%);
-	background-position: 0px 0px;
-	background-repeat: no-repeat;
-	text-indent: -9999px;
-	top: -80px;
-	width: 489px;
-	height: 75px;
-}
+	#header .pagename a {
+		display: block;
+		visibility: visible!important;
+		position: absolute;
+		left: 8px;
+		z-index: 99;
+		background-image: url(%%subreddit-text%%);
+		background-position: 0px 0px;
+		background-repeat: no-repeat;
+		text-indent: -9999px;
+		top: -80px;
+		width: 489px;
+		height: 75px;
+	}
 
-/* Announcement list.  Selects the first ordered list in the sidebar. */
+	/* Announcement list.  Selects the first ordered list in the sidebar. */
 
-.side .md>ol:nth-of-type(1) {
-	left: auto;
-	list-style: none outside none;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	top: 65px;
-	right: 16px;
-	z-index: 95;
-	max-width:300px;
+	.side .md>ol:nth-of-type(1) {
+		left: auto;
+		list-style: none outside none;
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		top: 65px;
+		right: 16px;
+		z-index: 95;
+		max-width:300px;
 
-}
+	}
 
-.side .md>ol:nth-of-type(1) > li {
-	margin-bottom:4px;
-}
-.side .md>ol:nth-of-type(1) a {
-	color: #FFF;
-	padding: 0px 6px 0px 26px;
-	background-color: rgba(0,0,0,.5);
-	border-radius: 2px;
-	border: 2px solid #FFF;
-	display: block;
-	min-height: 24px;
-	line-height:21px;
-	position: relative;
+	.side .md>ol:nth-of-type(1) > li {
+		margin-bottom:4px;
+	}
+	.side .md>ol:nth-of-type(1) a {
+		color: #FFF;
+		padding: 0px 6px 0px 26px;
+		background-color: rgba(0,0,0,.5);
+		border-radius: 2px;
+		border: 2px solid #FFF;
+		display: block;
+		min-height: 24px;
+		line-height:21px;
+		position: relative;
 
-}
+	}
 
 
-.side .md>ol:nth-of-type(1) a:hover {
-	background-color: rgba(0,0,0,1);
-}
-.side .md>ol:nth-of-type(1) strong>a {
-	color: #ffc70e;
-	border-color: #ffc70e;
-	font-weight:normal;
-}
-.side .md>ol:nth-of-type(1) a::before {
-	content: " ";
-	background-image:url(%%info%%);
-	background-repeat: no-repeat;
-	background-position:left center;
-	display: block;
-	border-right:1px solid #FFF;
-	  width: 22px;
-	  height: 100%;
-	  position: absolute;
-	  left: 2px;
-	  top: 50%;
-	  transform: translateY(-50%);
-} 
+	.side .md>ol:nth-of-type(1) a:hover {
+		background-color: rgba(0,0,0,1);
+	}
+	.side .md>ol:nth-of-type(1) strong>a {
+		color: #ffc70e;
+		border-color: #ffc70e;
+		font-weight:normal;
+	}
+	.side .md>ol:nth-of-type(1) a::before {
+		content: " ";
+		background-image:url(%%info%%);
+		background-repeat: no-repeat;
+		background-position:left center;
+		display: block;
+		border-right:1px solid #FFF;
+		width: 22px;
+		height: 100%;
+		position: absolute;
+		left: 2px;
+		top: 50%;
+		transform: translateY(-50%);
+	} 
 
-.side .md>ol:nth-of-type(1) strong>a::before {
+	.side .md>ol:nth-of-type(1) strong>a::before {
 		border-right:1px solid #ffc70e;
-	background-image:url(%%warning%%);
-}
+		background-image:url(%%warning%%);
+	}
 
-body {
-	min-width: 944px;
-	position: relative;
-}
+	body {
+		min-width: 944px;
+		position: relative;
+	}
 
-body:before {
-	background-size:100%;
-	background-position: 0 0;
-	background-attachment: initial;
-}
+	body:before {
+		background-size:100%;
+		background-position: 0 0;
+		background-attachment: initial;
+	}
 
-.morelink {
-	z-index: 20;
-}
+	.morelink {
+		z-index: 20;
+	}
 
-/* misc naut improvements */
+	/* misc naut improvements */
 
-.sidebox.submit .morelink:after {
-	display: none;
-}
-
-
+	.sidebox.submit .morelink:after {
+		display: none;
+	}
 
 
 
-.content {
-	position: relative;
-	z-index: 25;
-}
-
-#header .tabmenu li.selected a {
-	border-color: #ffc70e;
-}
-
-.commentarea {
-	z-index: 20;
-	position: relative;
-}
-
-.new-comment .usertext-body {
-	background-color: #FFF9E5;
-}
-
-.submit a, .submit {
-	color: #000 !important;
-	font-family: 'Futura','Century Gothic',sans-serif;
-	font-weight: 700;
-	letter-spacing: -.05em;
-	text-transform: uppercase;
-}
-
-#header {
-	z-index: 95;
-}
 
 
-.flairselector {
-	top: 38% !important;
-	left: 38% !important;
-}
+	.content {
+		position: relative;
+		z-index: 25;
+	}
 
-/* RES Specific Improvements */
+	#header .tabmenu li.selected a {
+		border-color: #ffc70e;
+	}
 
-.res .thing .tagline .author.submitter {
-	background-color: rgba(0,195,255,1) !important;
-}
+	.commentarea {
+		z-index: 20;
+		position: relative;
+	}
 
-.RES-keyNav-activeElement { 
-	border-left-color: #ffc70e !important;
-}
+	.new-comment .usertext-body {
+		background-color: #FFF9E5;
+	}
 
-/* Character Floater RANDOMIZED */
+	.submit a, .submit {
+		color: #000 !important;
+		font-family: 'Futura','Century Gothic',sans-serif;
+		font-weight: 700;
+		letter-spacing: -.05em;
+		text-transform: uppercase;
+	}
+
+	#header {
+		z-index: 95;
+	}
+
+
+	.flairselector {
+		top: 38% !important;
+		left: 38% !important;
+	}
+
+	/* RES Specific Improvements */
+
+	.res .thing .tagline .author.submitter {
+		background-color: rgba(0,195,255,1) !important;
+	}
+
+	.RES-keyNav-activeElement { 
+		border-left-color: #ffc70e !important;
+	}
+
+	/* Character Floater RANDOMIZED */
 /*input[name="uh"] ~ a:after {
   content: "";
   width: 600px;
@@ -1389,7 +1606,7 @@ input[name=uh] ~ a:after {
 		bottom: -10px;
 	}
 
-		.titlebox blockquote:nth-of-type(2) > ol li:last-of-type {
+	.titlebox blockquote:nth-of-type(2) > ol li:last-of-type {
 		background-size: 928px;
 		width: 944px;
 	}
