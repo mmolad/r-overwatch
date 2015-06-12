@@ -402,6 +402,23 @@ body .content .sitetable .link .title a:hover, .link .domain a:hover, .link .ent
 	height: 21px;
 }
 
+/* misc changes to menu */
+
+.titlebox blockquote:nth-of-type(1) {
+	transition: background-color .15s ease;
+}
+
+.titlebox blockquote:nth-of-type(1):hover {
+  background-color: rgba(0,195,255,.75);
+}
+
+.titlebox blockquote:nth-of-type(1) ul li:not(:first-of-type) {
+  transition: background-color .15s ease;
+}
+
+.titlebox blockquote:nth-of-type(1):hover ul li:not(:first-of-type) {
+  background-color: rgba(0,195,255,.75);
+}
 
 /*------------------------------------------------------------------
 [Hero Roster]
@@ -490,7 +507,6 @@ Blockquote 						[Parent]
 	height: 40px;
 	line-height: 40px;
 	width: 100%;
-	padding-left: 20px;
 	text-shadow: 1px 1px 1px rgba(0,0,0,.5);
 	text-transform: uppercase;
 	font-style: italic;
@@ -1060,12 +1076,13 @@ Blockquote 						[Parent]
 
 .titlebox blockquote:nth-of-type(4) > ol > li:hover {
 	background: #ffc70e;
-	cursor: help;
+	/*cursor: help;*/
 	box-shadow:inset 0px 0px 3px rgba(0,0,0,.1), 0px 0px 3px rgba(0,0,0,.15);
 }
 
 .titlebox blockquote:nth-of-type(4) > ol > li::after {
-	content: "This is where extra text will go.";
+	/*content: "This is where extra text will go.";*/
+	content: none;
 	position: absolute;
 	display: block;
 	bottom: -65px;
@@ -1108,6 +1125,10 @@ Blockquote 						[Parent]
 
 /* Linkflair */
 
+.comments-page #siteTable {
+	background: #FFF;
+}
+
 /* BLue Post */
 
 .linkflair-bluepost {
@@ -1116,6 +1137,45 @@ Blockquote 						[Parent]
 	background-position: left center;
 	background-color: #333;
 	border:1px solid #000;
+}
+
+.comments-page .linkflair-bluepost {
+	background-image: url(%%blizzard-fadeaway%%);
+	background-position: top -80px left -40px;
+	border-radius: 0;
+}
+
+.comments-page .linkflair-bluepost::before {
+	content: " ";
+	pointer-events: none;
+	display: block;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 0;
+	background: radial-gradient(ellipse farthest-side at left top, rgba(255, 255, 255,0) 0%, rgba(0, 195, 255, 0.15) 100%);
+}
+
+.linkflair-bluepost .usertext .md {
+	color: rgba(0,195,255,1);
+}
+
+.linkflair-bluepost .usertext .md a {
+	color: #FFF;
+	font-weight: bold;
+}
+
+.linkflair-bluepost .usertext .md blockquote {
+	color: inherit;
+}
+
+.linkflair-bluepost .usertext .md pre {
+	color: initial;
+}
+
+
+.linkflair-bluepost .usertext .md a:visited {
+	color: #FFF;
 }
 
 .link.last-clicked.linkflair-bluepost {
@@ -1127,7 +1187,7 @@ Blockquote 						[Parent]
 	font-family: 'Futura','Century Gothic',sans-serif;
 }
 
-.linkflair-bluepost a {
+.listing-page .linkflair-bluepost  a {
 	color: rgba(0,195,255,1) !important;
 }
 .linkflair-bluepost .entry .tagline, .linkflair-bluepost .entry .buttons li a {
@@ -1156,7 +1216,6 @@ Blockquote 						[Parent]
 /* Sticky Post */
 .stickied a.title {
 	font-weight: 900;
-	font-style: italic;
 	font-family: 'Futura','Century Gothic',sans-serif;
 }
 
@@ -1169,24 +1228,48 @@ Blockquote 						[Parent]
 	box-shadow: 0px 1px 3px rgba(0,0,0,.25);
 }
 
+.comments-page .stickied {
+	background-image: url(%%overwatch-fadeaway-tilted%%);
+	background-color: transparent;
+	background-position: top -80px left -20px;
+	border-radius: 0;
+}
+
+.comments-page .stickied::before {
+	content: " ";
+	display: block;
+	pointer-events: none;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 0;
+	background: radial-gradient(ellipse farthest-side at left top, rgba(255, 255, 255,0) 0%, rgba(101, 179, 84,.25) 100%);
+}
+
+
+
 /* Userflair */
 .flair {
 	width: 36px;
 	height: 16px;
 	overflow:hidden;
-	background-color:#EEE;
 	color:#333;
 	display: inline-block;
-	padding-left:40px;
+	line-height: 16px;
+	box-sizing: content-box;
+	vertical-align: top;
+	font-size: 11px !important;
 }
 
 .flair::before {
 	content: " ";
-	display: block;
+	display: inline-block;
 	width: 36px;
 	height: 16px;
 	background: url(%%sprite-flair%%);
 	overflow: hidden;
+	margin: 0;
+	margin-right: 6px;
 }
 
 .flair:hover {
@@ -1235,6 +1318,25 @@ Blockquote 						[Parent]
 .flair-zarya::before {
 	background-position: 0 0;
 }
+
+.flair-blizzard {
+	width: auto;
+}
+
+.flair-blizzard::before {
+	background: url(%%blizzard%%);
+	height: 16px;
+	  background-repeat: no-repeat;
+  margin-top: 2px;
+	width:20px;
+	margin-right: 2px;
+	margin-left: 2px;
+}
+.linkflair-bluepost .flair-blizzard {
+	color: #FFF;
+	font-weight: bold;
+}
+
 /* Recent Gameplay Videos */
 
 /*.titlebox blockquote:nth-of-type(3) a[href="https://www.youtube.com/playlist?list=PLAYFVhxsaqDvbsKX5TJd869r64aFQ4N52"] {
@@ -1479,14 +1581,43 @@ Blockquote 						[Parent]
 	}
 
 	/* misc naut improvements */
+	.content .thing .title:visited, .content .thing.visited .title {
+	  color: rgb(135, 173, 201);
+	}
+	#sr-header-area:hover .sr-bar a, #sr-header-area:hover #sr-more-link, #sr-header-area:hover .seperator, #sr-header-area:hover .dropdown.srdrop .selected {
+	  color: #666;
+	}	
+	.seperator {
+		color: #ffc70e;
+	}
+	#header-bottom-right a {
+		color: #666;
+	}
+	#header .pagename a:hover {
+		background-color: transparent;
+	}
+	.link .score.likes {
+	  color: #ffc70e;
+	}
 
+	#sr-header-area:hover .sr-bar a {
+		color: inherit;
+	}
+
+	#sr-header-area:hover {
+	  background: rgba(255,255,255,1);
+	}
 	.sidebox.submit .morelink:after {
 		display: none;
 	}
 
 
-
-
+	#search #searchexpando {
+		line-height: 36px;
+	}
+	.arrow.down:after {
+		content: none;
+	}
 
 	.content {
 		position: relative;
@@ -1507,7 +1638,7 @@ Blockquote 						[Parent]
 	}
 
 	.submit a, .submit {
-		color: #000 !important;
+		color: #511616 !important;
 		font-family: 'Futura','Century Gothic',sans-serif;
 		font-weight: 700;
 		letter-spacing: -.05em;
@@ -1525,13 +1656,39 @@ Blockquote 						[Parent]
 	}
 
 	/* RES Specific Improvements */
+	#authorInfoToolTip {
+		margin-left: 12px !important;
+  		margin-top: 0 !important;
+	}
+
+	.linkflair-bluepost a.author {
+	  color: #FFF !important;
+	  font-weight: bold;
+	}
 
 	.res .thing .tagline .author.submitter {
-		background-color: rgba(0,195,255,1) !important;
+		background-color: #ffc70e !important;
+		color: #511616 !important;
+	}
+
+	.res .thing .tagline .author.submitter:hover {
+		background-color: #fdda75 !important;
 	}
 
 	.RES-keyNav-activeElement { 
 		border-left-color: #ffc70e !important;
+	}
+
+	.res .commentarea .thing.new-comment, .comment-visits-box {
+	  box-shadow: 0px 0px 3px #fdda75;
+	  border: 1px solid #ffc70e !important;
+	}
+
+	.new-comment .usertext-body {
+	  background: none;
+	  border: none;
+	  margin: 0;
+	  padding: 0;
 	}
 
 	/* Character Floater RANDOMIZED */
@@ -1566,8 +1723,8 @@ input[name=uh] ~ a:after {
 @media screen and (max-width: 1589px) {
 	.titlebox a[href^="http://bit.ly/ow-"]:nth-of-type(3) {
 		left: auto;
-		right: 649px;
-		bottom: 10px;
+		right: 689px;
+		bottom: 70px;
 	}
 	.titlebox blockquote:nth-of-type(2) > ol li {
 		margin-bottom: 10px;
@@ -1578,26 +1735,76 @@ input[name=uh] ~ a:after {
 		bottom: -10px;
 	}
 
-	.titlebox blockquote:nth-of-type(2) > ol li:nth-of-type(7) {
-		margin-right: 0;
-	}
-
-	.titlebox blockquote:nth-of-type(2) > ol li:nth-of-type(8) {
-		margin-left: -13px;
-	}
 	.titlebox blockquote:nth-of-type(2)  {
-		width: 334px;
 		right: 16px;
 		left: auto;
-		top: 120px;
+		top: 140px;
 	}
 
 	.titlebox blockquote:nth-of-type(2) > ol li:last-of-type {
 		right: -16px;
-		top:-120px;
+		top:-140px;
 		left: auto;
 	}
 }
+
+
+@media screen and (max-width: 1263px) {
+/*	
+	Attempt to fit hero selector onto 1280px screen.  Disabled due to layering issues.  Maybe re-enable later on if we limit to a select set of heroes.
+	.titlebox a[href^="http://bit.ly/ow-"]:nth-of-type(2) {
+		left: auto;
+		right: 280px;
+		bottom: -10px;
+	}
+
+	.titlebox blockquote:nth-of-type(2) > ol li:nth-of-type(n+7) {
+		opacity: 0;
+		z-index: -100;
+		transition: opacity .5s;
+	}
+
+	.titlebox blockquote:nth-of-type(2):hover > ol li:nth-of-type(n+7) {
+		opacity: 1;
+		z-index: auto;
+	}
+
+	.titlebox blockquote:nth-of-type(2):hover {
+		background-color: rgba(0,0,0,.5);
+		z-index: 100;
+		box-sha
+	}
+
+	.titlebox blockquote:nth-of-type(2)  {
+		right: 16px;
+		left: auto;
+		top: 140px;
+		width: 300px;
+		box-sizing: content-box;
+		padding:16px;
+		transition: background-color .5s;
+	}
+
+	.titlebox blockquote:nth-of-type(2) > ol li:last-of-type {
+		right: 0;
+		top:-140px;
+		left: auto;
+	}
+}*/
+	.titlebox blockquote:nth-of-type(2)  {
+		right: 16px;
+		left: auto;
+		top: 200px;
+		width: 300px;
+	}
+
+	.titlebox blockquote:nth-of-type(2) > ol {
+		display: none;
+	}
+
+}
+
+
 
 @media screen and (max-width: 944px) {
 	.titlebox a[href^="http://bit.ly/ow-"]:nth-of-type(2) {
