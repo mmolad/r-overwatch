@@ -46,9 +46,7 @@
 * [World of Warcraft](/r/wow)
 * [Hearthstone](/r/hearthstone )
 
-
-1. **[No link-based image posts in this subreddit.](/r/overwatch)**
-2. [Do not make posts complaining that there are too many youtube/podcasts/fanarts.](/r/overwatch)
+&nbsp;
 
 > [The World Needs Heroes](http://battle.net/overwatch/heroes#)
 
@@ -66,7 +64,12 @@
 > 1. [**Hanzo**](http://bit.ly/ow-hanzo) [Hanzo](http://bit.ly/ow-hanzo) [Hanzo *Role: __Offense__*](http://bit.ly/ow-hanzo#offense) 
 > 1. [**Mercy**](http://bit.ly/ow-mercy) [Mercy](http://bit.ly/ow-mercy) [Mercy *Role: __Support__*](http://bit.ly/ow-mercy#support) 
 > 1. [**Zenyatta**](http://bit.ly/ow-zenyatta) [Zenyatta](http://bit.ly/ow-zenyatta) [Zenyatta *Role: __Support__*](http://bit.ly/ow-zenyatta#support) 
+> 1. Glass Blur
 > 1. Cherry Blur
+
+1. **[No link-based image posts in this subreddit.](/r/overwatch)**
+2. [Do not make posts complaining that there are too many youtube/podcasts/fanarts.](/r/overwatch)
+
 
 >##Welcome to /r/Overwatch!
 >Overwatch&trade; is a team-based shooter where heroes do battle in a world of conflict.
@@ -79,6 +82,7 @@
 
 >[Official Facebook Page](http://www.facebook.com/playoverwatch)
 
+&nbsp;
 
 > ##Posting Guidelines
 
